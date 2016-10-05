@@ -24,7 +24,14 @@ Example:
 
 
 ## I have a collection-ish type (like a List, or maybe a Stream), and i want to collect the information in it into some other object
-_foldLeft_ to the rescue (or _foldRight_). You might know "reduce" from jQuery, or "collect" from Java 8 Streams (shiver). It solves the same problem, without introducing new problems. 
+_foldLeft_ to the rescue (or _foldRight_). You might know "reduce" from jQuery, or "collect" from Java 8 Streams (shiver). It solves the same problem, without introducing new problems. The signature of _foldLeft_ is `B foldLeft(F2<B,A,A> accumulator, B init)`. WTF is that monster called "accumulator" in there you ask? Its a function that takes two argument. In Java 8 lingo its "BiFunction" (shiver). The task of the accumulator is first to take your init value and the first leftmost element in your collection, and return a new object og the same class as your init object. Then it takes _that_ object, and the next object in your collection, and returns yet another object, until the collection is exhausted. The last object you return is now returned from _foldLeft_.
+You can use foldLeft to produce any new object you want, based on the contents of the collection. It doesn't _have_ to be a collection of course. Any object with _foldLeft_ can be transformed into a new object of a different class based on its contents. Or "contents".
+
+Exameple:
+
+
+## I am about to throw an exception, but i get yelled at. I want an alternative
+Here you have several
 
 
 
