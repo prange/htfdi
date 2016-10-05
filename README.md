@@ -30,8 +30,13 @@ You can use foldLeft to produce any new object you want, based on the contents o
 Exameple:
 
 
-## I am about to throw an exception, but i get yelled at. I want an alternative
-Here you have several
+## I want to use _null_ to express the absence of a value, but i get yelled at. What is the alternative?
+Use `Option` (Or `Optional` from Java 8 - actually not too bad). Option is like a list with zero or one element. It has _map_, but not _foldLeft_. But it has a fold method. In FJ the fold is called _option_, and is a bit confusing. But you will get it after a little while. Both _fold_ and _foldLeft_ transforms your object into a new type of object. The difference between _fold_ and _foldLeft_ is that _foldLeft_ takes an initial value, and adds the elements to that value, whereas _fold_ handles each internal element seperately.
+The signature of _option_ makes it a bir clearer: `B option(B ifNone, F<A,B> ifSome)`. If your option is empty, contains no value, is undefined, is None, then the value _isNone_ is returned. Otherwise: If your Option really contains a value, that value is applied to the function _ifSome_, and the result of that function is returned.
+
+Example:
+
+
 
 
 
